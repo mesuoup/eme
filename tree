@@ -1,0 +1,66 @@
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class JTreeExample {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("JTree Example");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            // Create the top-level parent node 'html'
+            DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("html");
+
+            // Create 'head' and 'body' as siblings
+            DefaultMutableTreeNode headNode = new DefaultMutableTreeNode("head");
+            DefaultMutableTreeNode bodyNode = new DefaultMutableTreeNode("body");
+
+            // Add 'head' and 'body' as children of 'html'
+            rootNode.add(headNode);
+            rootNode.add(bodyNode);
+
+            // Create 'meta' and 'title' as children of 'head'
+            DefaultMutableTreeNode metaNode = new DefaultMutableTreeNode("meta");
+            DefaultMutableTreeNode titleNode = new DefaultMutableTreeNode("title");
+
+            // Add 'meta' and 'title' as children of 'head'
+            headNode.add(metaNode);
+            headNode.add(titleNode);
+
+            // Create 'ul', 'h1', and 'h2' as children of 'body'
+            DefaultMutableTreeNode ulNode = new DefaultMutableTreeNode("ul");
+            DefaultMutableTreeNode h1Node = new DefaultMutableTreeNode("h1");
+            DefaultMutableTreeNode h2Node = new DefaultMutableTreeNode("h2");
+
+            // Add 'ul', 'h1', and 'h2' as children of 'body'
+            bodyNode.add(ulNode);
+            bodyNode.add(h1Node);
+            bodyNode.add(h2Node);
+
+            // Create 'li' and 'li' as children of 'ul'
+            DefaultMutableTreeNode liNode1 = new DefaultMutableTreeNode("li");
+            DefaultMutableTreeNode liNode2 = new DefaultMutableTreeNode("li");
+
+            // Add 'li' and 'li' as children of 'ul'
+            ulNode.add(liNode1);
+            ulNode.add(liNode2);
+
+            // Create 'a' as a child of 'h2'
+            DefaultMutableTreeNode aNode = new DefaultMutableTreeNode("a");
+
+            // Add 'a' as a child of 'h2'
+            h2Node.add(aNode);
+
+            // Create the JTree with the root node
+            JTree tree = new JTree(rootNode);
+
+            // Create a JScrollPane to display the tree
+            JScrollPane treeScrollPane = new JScrollPane(tree);
+
+            // Add the treeScrollPane to the frame
+            frame.getContentPane().add(treeScrollPane);
+
+            frame.setSize(300, 400);
+            frame.setVisible(true);
+        });
+    }
+}
